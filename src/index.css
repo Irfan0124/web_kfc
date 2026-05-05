@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-kfc-red: #E4002B;
+  --color-kfc-cream: #FFF5E1;
+  --color-kfc-black: #1A0000;
+  --color-kfc-gold: #F6C540;
+  --color-kfc-dark-red: #B0001F;
+  --color-kfc-light-gray: #F2F2F2;
+  --color-kfc-text: #1A0000;
+  --color-kfc-text-muted: #6B5B5B;
+
+  /* Typography */
+  --font-display: "Bebas Neue", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  /* Spacing & Radius */
+  --radius-xl: 16px;
+  --radius-2xl: 32px;
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(228, 0, 43, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(228, 0, 43, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(228, 0, 43, 0); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-kfc-cream text-kfc-text font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight leading-[0.95] uppercase;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-kfc-red text-white font-bold rounded-full uppercase tracking-widest transition-all duration-200 hover:scale-105 hover:bg-kfc-dark-red hover:shadow-lg active:scale-95 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-kfc-black text-white font-bold rounded-full uppercase tracking-widest transition-all duration-200 hover:bg-black hover:shadow-lg active:scale-95 cursor-pointer;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-kfc-red text-kfc-red font-bold rounded-full uppercase tracking-widest transition-all duration-200 hover:bg-kfc-red hover:text-white active:scale-95 cursor-pointer;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-kfc-gold text-kfc-black font-bold rounded-full uppercase tracking-widest transition-all duration-200 hover:shadow-md active:scale-95 cursor-pointer;
+  }
+
+  .card-menu-item {
+    @apply bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .text-display { @apply text-6xl md:text-8xl font-display; }
+  .text-hero { @apply text-5xl md:text-7xl font-display; }
+  .text-section { @apply text-4xl md:text-5xl font-display; }
+
+  .animate-fade-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
